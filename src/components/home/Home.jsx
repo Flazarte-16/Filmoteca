@@ -3,6 +3,7 @@ import { MovieList } from "../movieList/MovieList";
 import { Navbar } from "../navbar/Navbar";
 import { MovieDetails } from "../movieDetails/MovieDetails";
 import { Route } from "wouter";
+import { ViewLater } from "../viewLater/ViewLater";
 
 export const Home = () => {
   const [type, setType] = useState("movie");
@@ -16,7 +17,11 @@ export const Home = () => {
       </Route>
 
       <Route path="/details">
-        <MovieDetails id={selectedId} type={type} />
+        <MovieDetails selectedId={selectedId} type={type} />
+      </Route>
+
+      <Route path="/viewLater">
+        <ViewLater selectedId={selectedId} type={type} />
       </Route>
     </>
   );

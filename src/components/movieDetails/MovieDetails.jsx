@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Navbar } from "../navbar/Navbar";
 import "./MovieDetails.css";
 
-export const MovieDetails = ({ type, id }) => {
+export const MovieDetails = ({ type, selectedId }) => {
   const [movieDetail, setMovieDetail] = useState({});
   useEffect(() => {
     const fetchDetails = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/${type}/${id}?api_key=51886a75b1af8dd9b4111b07e19d5c60&language=es-ES`
+          `https://api.themoviedb.org/3/${type}/${selectedId}?api_key=51886a75b1af8dd9b4111b07e19d5c60&language=es-ES`
         );
         const data = await response.json();
         setMovieDetail(data);
@@ -17,12 +16,14 @@ export const MovieDetails = ({ type, id }) => {
       }
     };
     fetchDetails();
-  }, [id, type]);
+  }, [selectedId, type]);
 
   return (
     <>
-      <Navbar />
       <div className="movie-details-container">
+        <a href="./" className="returnButton">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </a>
         <div className="movie-details-content">
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`}
@@ -37,6 +38,10 @@ export const MovieDetails = ({ type, id }) => {
           </div>
         </div>
       </div>
+      <footer>
+        <h2>Filmoteca</h2>
+        <p>@ 2025 Filmoteca. Todos los derechos reservados</p>
+      </footer>
     </>
   );
 };

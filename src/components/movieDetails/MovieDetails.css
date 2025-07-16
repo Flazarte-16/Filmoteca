@@ -27,10 +27,6 @@
   transition: transform 0.3s ease;
 }
 
-.movie-details-poster:hover {
-  transform: scale(1.05);
-}
-
 .movie-details-info {
   text-align: center;
 }
@@ -47,18 +43,11 @@
   color: #cccccc;
 }
 
-/* Responsive */
-@media (min-width: 768px) {
-  .movie-details-content {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  .movie-details-poster {
-    margin-bottom: 0;
-  }
-
-  .movie-details-info {
-    text-align: left;
-  }
+.returnButton {
+  text-decoration: none;
+  text-align: center;
+  color: #0d0d0d;
+  border-radius: 5px;
+  background-color: #f5c518;
+  width: 30px;
 }

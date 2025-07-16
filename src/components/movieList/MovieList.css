@@ -86,3 +86,24 @@
   background-color: #ffe066;
   transform: scale(1.05);
 }
+
+.bookmark-icon {
+  font-size: 2rem;
+  color: #f9c74f;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.bookmark-icon:hover {
+  transform: scale(1.2);
+  color: #ffe066;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #121212;
+  color: #fff;
+}

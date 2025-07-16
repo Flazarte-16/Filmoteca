@@ -29,29 +29,41 @@ export const MovieList = ({ type, query, setSelectedId }) => {
     console.log(id);
   };
 
+  const saveMovie = (movie) => {
+    let saved = JSON.parse(localStorage.getItem("movies"));
+    if (!Array.isArray(saved)) {
+      saved = [];
+    }
+    saved.push(movie);
+    localStorage.setItem("movies", JSON.stringify(saved));
+  };
+
   return (
     <>
       <ul className="movie-list">
         {movies.map((movie) => (
-          <>
-            <li id="movie.id" className="movie-item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div className="movie-overlay">
-                <h3>{movie.title}</h3>
-                <p>⭐{movie.vote_average}</p>
-                <Link href="/details">
-                  <button onClick={() => handleMovieId(movie.id)}>
-                    view more
-                  </button>
-                </Link>
-              </div>
-            </li>
-          </>
+          <li id={movie.id} className="movie-item" key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <div className="movie-overlay">
+              <h3>{movie.title}</h3>
+              <p>⭐{movie.vote_average}</p>
+              <Link href="/details">
+                <button onClick={() => handleMovieId(movie.id)}>
+                  view more
+                </button>
+              </Link>
+              <button onClick={() => saveMovie(movie)}>View Later</button>
+            </div>
+          </li>
         ))}
       </ul>
+      <footer>
+        <h2>Filmoteca</h2>
+        <p>@ 2025 Filmoteca. Todos los derechos reservados</p>
+      </footer>
     </>
   );
 };

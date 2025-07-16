@@ -3,17 +3,19 @@ import "./Navbar.css";
 export const Navbar = ({ onSelectType, setQuery, type }) => {
   return (
     <nav className="navbar">
-      <h1 className="logo">Filmoteca</h1>
+      <a className="logo" href="./">
+        Filmoteca
+      </a>
       <ul className="nav-links">
-        <a className="nav-item" href="./">
-          Home
-        </a>
         <li className="nav-item" onClick={() => onSelectType("movie")}>
           Movies
         </li>
         <li className="nav-item" onClick={() => onSelectType("tv")}>
-          Series
+          TV
         </li>
+        <a href="/viewLater" className="nav-item">
+          View Later
+        </a>
       </ul>
       <input
         className="search-input"
